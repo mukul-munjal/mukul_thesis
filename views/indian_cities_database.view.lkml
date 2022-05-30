@@ -4,12 +4,11 @@ view: indian_cities_database {
 
   dimension: city {
     type: string
-    sql: ${TABLE}.City ;;
+    sql:TRIM(${TABLE}.City) ;;
   }
 
   dimension: country {
     type: string
-    map_layer_name: countries
     sql: ${TABLE}.country ;;
   }
 
@@ -30,11 +29,14 @@ view: indian_cities_database {
 
   dimension: state {
     type: string
-    sql: ${TABLE}.State ;;
+    sql:TRIM(${TABLE}.State);;
+    # sql: CASE WHEN ${TABLE}.State LIKE("%Tamil%") THEN "Tamil Nadu" ELSE ${TABLE}.State END;;
+    map_layer_name: india_map
   }
 
   measure: count {
+    label: "has cities count"
     type: count
-    drill_fields: []
+    drill_fields: [city]
   }
 }

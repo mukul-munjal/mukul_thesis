@@ -1,6 +1,6 @@
-view: city_hour {
+view: station_day {
   derived_table: {
-    sql: SELECT * FROM `looker-dcl-data.breathe_india.city_hour` LIMIT 10
+    sql: SELECT * FROM `looker-dcl-data.breathe_india.station_day`
       ;;
   }
 
@@ -9,19 +9,25 @@ view: city_hour {
     drill_fields: [detail*]
   }
 
-  dimension: city {
+  dimension: station_id {
     type: string
-    sql: ${TABLE}.City ;;
+    sql: ${TABLE}.StationId ;;
   }
 
-  dimension_group: datetime {
-    type: time
-    sql: ${TABLE}.Datetime ;;
+  dimension: date {
+    type: date
+    datatype: date
+    sql: ${TABLE}.Date ;;
   }
 
   dimension: pm2_5 {
     type: number
     sql: ${TABLE}.PM2_5 ;;
+  }
+
+  dimension: pm10 {
+    type: number
+    sql: ${TABLE}.PM10 ;;
   }
 
   dimension: no_ {
@@ -37,6 +43,11 @@ view: city_hour {
   dimension: nox {
     type: number
     sql: ${TABLE}.NOx ;;
+  }
+
+  dimension: nh3 {
+    type: number
+    sql: ${TABLE}.NH3 ;;
   }
 
   dimension: co {
@@ -79,13 +90,26 @@ view: city_hour {
     sql: ${TABLE}.AQI_Bucket ;;
   }
 
+  dimension: BTX_d {
+    type: number
+    sql: (${benzene}+${toluene}+${xylene}) ;;
+  }
+
+  measure: BTX{
+    type: sum
+    sql: ${BTX_d} ;;
+  }
+
   set: detail {
     fields: [
-      city,
-      datetime_time,
+      station_id,
+      date,
       pm2_5,
+      pm10,
+      no_,
       no2,
       nox,
+      nh3,
       co,
       so2,
       o3,
