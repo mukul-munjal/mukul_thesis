@@ -7,6 +7,8 @@ view: city_day_new {
   measure: count {
     type: count
     drill_fields: [detail*]
+
+
   }
 
   dimension: city {
