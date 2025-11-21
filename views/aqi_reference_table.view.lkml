@@ -18,7 +18,19 @@ view: aqi_reference_table {
   dimension: aqi {
     type: string
     sql: TRIM(${TABLE}.AQI) ;;
-
+    html: {% if value == "0-50" %}
+    <p style="background-color: lightgreen"; font-size:100%; text-align:center>{{ value }}</p>
+    {% elsif value == "51-100" %}
+    <p style="background-color: yellow";font-size:100%; text-align:center>{{ value }}</p>
+    {% elsif value == "101-200" %}
+    <p style="background-color: orange";font-size:100%; text-align:center>{{ value }}</p>
+    {% elsif value == "201-300" %}
+    <p style="background-color: Tomato";font-size:100%; text-align:center>{{ value }}</p>
+    {% elsif value} == "301-400" %}
+    <p style="background-color: IndianRed";font-size:100%; text-align:center>{{ value }}</p>
+    {% else %}
+    <p style="background-color: SaddleBrown";font-size:100%; text-align:center>{{ value }}</p>
+    {% endif %};;
 
   }
 

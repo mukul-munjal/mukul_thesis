@@ -29,6 +29,8 @@ view: city_day {
   }
 
   dimension_group: date {
+  #hidden: yes
+
     type: time
     timeframes: [
       raw,

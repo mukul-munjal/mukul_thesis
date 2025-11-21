@@ -9,6 +9,7 @@ include: "/views/**/*.view"
 # }
 
 # persist_with: mukul_thesis_default_datagroup
+explore: station_day {}
 
 explore: indian_cities_database {
   join: city_day_new {

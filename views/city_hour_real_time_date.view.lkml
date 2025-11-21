@@ -76,8 +76,8 @@ view: city_hour_real_time_date {
 
   dimension: realtime_city {
     type: string
-    # sql: ${get_realtime_cities_by_hour.b} ;;
-    sql: {% parameter getting_city_name_realtime %};;
+    #sql: ${get_realtime_cities_by_hour.b} ;;
+   sql: {% parameter getting_city_name_realtime %};;
   }
 
 

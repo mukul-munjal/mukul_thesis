@@ -1,4 +1,8 @@
 view: get_realtime_cities_by_hour {
+
+##TOTAL DISTINCT CITIES = 214
+
+
   derived_table: {
     sql: WITH city_hour_real_time_date AS (SELECT * FROM `looker-dcl-data.breathe_india.city_hour_2022`
       )
@@ -12,15 +16,9 @@ SELECT
 FROM city_hour_real_time_date
 WHERE ((((EXTRACT(HOUR FROM CURRENT_TIMESTAMP()) =  (EXTRACT(HOUR FROM city_hour_real_time_date.Datetime ))) AND (EXTRACT(DAY FROM CURRENT_TIMESTAMP()) =  (EXTRACT(DAY FROM city_hour_real_time_date.Datetime )))) AND (EXTRACT(MONTH FROM CURRENT_TIMESTAMP()) =  (EXTRACT(MONTH FROM city_hour_real_time_date.Datetime )))) AND (NOT ( city_hour_real_time_date.AQI IS NULL)))
 GROUP BY
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
+    1,2,3,4,5,6
 ORDER BY
-    2 DESC,
-    6
+    2 DESC, 6
 LIMIT 5000
  ;;
   }

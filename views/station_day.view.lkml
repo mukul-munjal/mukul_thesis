@@ -14,6 +14,11 @@ view: station_day {
     sql: ${TABLE}.StationId ;;
   }
 
+  dimension: test_dim {
+    type: number
+    sql: ${TABLE}.CO ;;
+  }
+
   dimension: date {
     type: date
     datatype: date
