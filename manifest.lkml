@@ -8,5 +8,5 @@ project_name: "mukul_thesis"
 # }
 
 constant: branch {
-  value: "new-branch-from-main-new1"
+  value: "new-branch-from-main-new2"
 }
